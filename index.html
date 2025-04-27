@@ -34,17 +34,19 @@
       max-width: 900px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between; /* Ustawienie zawartości w poziomie */
+      justify-content: space-between;
       align-items: center;
+      transition: 0.3s;
+      transform: scale(1);
     }
     .member img {
-      width: 100px; /* Określamy stałą szerokość zdjęcia */
+      width: 100px;
       height: auto;
       border-radius: 10px;
     }
     .member-content {
-      text-align: left; /* Tekst po lewej stronie */
-      flex: 1; /* Pozwoli to na elastyczne rozciąganie kontenera z tekstem */
+      text-align: left;
+      flex: 1;
     }
     .member a {
       text-decoration: none;
@@ -53,14 +55,48 @@
       font-size: 20px;
       display: block;
       margin-top: 10px;
-    }
-    .member a:hover {
-      color: #4CAF50;
+      transition: color 0.3s;
     }
     .member p {
       color: #333;
       font-size: 16px;
       margin-top: 5px;
+    }
+
+    /* --- Hover kolory dla nicków --- */
+    .hover-goldi:hover {
+      color: #39FF14; /* zielony neon */
+    }
+    .hover-kanapka:hover {
+      color: #B026FF; /* fiolet neon */
+    }
+    .hover-nanotem:hover {
+      color: #FF073A; /* czerwony neon */
+    }
+    .hover-takashi:hover {
+      color: #9370DB; /* zostaje standardowy */
+    }
+
+    /* --- Hover efekty dla kart (kolor + powiększenie) --- */
+    .member-goldi:hover {
+      background: #0a0a0a; /* ciemne tło */
+      border: 2px solid #39FF14; /* zielony neon */
+      transform: scale(1.05);
+    }
+    .member-kanapka:hover {
+      background: #0a0a0a;
+      border: 2px solid #B026FF; /* fiolet neon */
+      transform: scale(1.05);
+    }
+    .member-nanotem:hover {
+      background: #0a0a0a;
+      border: 2px solid #FF073A; /* czerwony neon */
+      transform: scale(1.05);
+    }
+    .member-takashi:hover {
+      background: #0a0a0a;
+      border: 2px solid #9370DB;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -71,44 +107,50 @@
   <div class="member-list" id="memberList"></div>
 
   <script>
-    // --- Tutaj dodajesz ziomków ---
     const ziomki = [
       {
         nick: "Goldi",
         img: "https://i.imgur.com/ANrVCM9.jpeg",
         link: "https://www.roblox.com/users/974253888/profile",
-        description: "Ziomek z dwubiegunowością i dużym ego"
+        description: "Ziomek z dwubiegunowością i dużym ego",
+        hoverClass: "hover-goldi",
+        cardClass: "member-goldi"
       },
       {
         nick: "kanapka",
         img: "https://imgur.com/a/L36OAOa",
         link: "https://www.roblox.com/users/2447062401/profile",
-        description: "Weeb co wpierdala więcej niż goldi i tak jest chudy jak patyk 👍🏻 😎"
+        description: "Weeb co wpierdala więcej niż goldi i tak jest chudy jak patyk 👍🏻 😎",
+        hoverClass: "hover-kanapka",
+        cardClass: "member-kanapka"
       },
       {
         nick: "Nanotem",
         img: "https://imgur.com/a/oZyl9uq",
         link: "https://www.roblox.com/users/383566542/profile",
-        description: "Krasnolud a nie elf  (po lobotomii) pomyłka grozi kastracją"
+        description: "Krasnolud a nie elf (po lobotomii) pomyłka grozi kastracją",
+        hoverClass: "hover-nanotem",
+        cardClass: "member-nanotem"
       },
       {
         nick: "Takashi",
         img: "https://imgur.com/a/A5Y7Mvv",
         link: "https://www.roblox.com/users/3838983742/profile",
-        description: "Nasz femboy"
+        description: "Nasz femboy",
+        hoverClass: "hover-takashi",
+        cardClass: "member-takashi"
       }
     ];
 
-    // --- Tutaj kod który tworzy automatycznie kartę dla każdego ziomka ---
     const memberList = document.getElementById('memberList');
 
     ziomki.forEach(ziomek => {
       const memberDiv = document.createElement('div');
-      memberDiv.className = 'member';
+      memberDiv.className = `member ${ziomek.cardClass}`;
 
       memberDiv.innerHTML = `
         <div class="member-content">
-          <a href="${ziomek.link}" target="_blank">${ziomek.nick}</a>
+          <a href="${ziomek.link}" target="_blank" class="${ziomek.hoverClass}">${ziomek.nick}</a>
           <p>${ziomek.description}</p>
         </div>
         <img src="${ziomek.img}" alt="${ziomek.nick}">
