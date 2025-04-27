@@ -30,12 +30,12 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      width: 90%; /* Zmiana szerokości, żeby zajmowały prawie całą stronę */
-      max-width: 900px; /* Maksymalna szerokość, żeby się nie rozciągało za mocno */
+      width: 90%;
+      max-width: 900px;
       margin: 0 auto;
-      display: flex; /* Flexbox, żeby zrobić układ poziomy */
-      align-items: center; /* Wyrównanie w pionie */
-      gap: 20px; /* Odstęp między tekstem a zdjęciem */
+      display: flex;
+      justify-content: space-between; /* Ustawienie zawartości w poziomie */
+      align-items: center;
     }
     .member img {
       width: 200px; /* Określamy stałą szerokość zdjęcia */
@@ -44,6 +44,7 @@
     }
     .member-content {
       text-align: left; /* Tekst po lewej stronie */
+      flex: 1; /* Pozwoli to na elastyczne rozciąganie kontenera z tekstem */
     }
     .member a {
       text-decoration: none;
@@ -107,7 +108,7 @@
 
       memberDiv.innerHTML = `
         <div class="member-content">
-          <a href="${ziome.link}" target="_blank">${ziomek.nick}</a>
+          <a href="${ziomek.link}" target="_blank">${ziomek.nick}</a>
           <p>${ziomek.description}</p>
         </div>
         <img src="${ziomek.img}" alt="${ziomek.nick}">
