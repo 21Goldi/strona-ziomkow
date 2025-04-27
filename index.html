@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ziomki</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px 0;
+      margin: 0;
+    }
+    .member-list {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .member {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 200px;
+    }
+    .member img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .member a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      font-size: 18px;
+      display: block;
+      margin-top: 5px;
+    }
+    .member a:hover {
+      color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ziomki</h1>
+
+  <div class="member-list" id="memberList"></div>
+
+  <script>
+    // --- Tutaj dodajesz ziomków ---
+    const ziomki = [
+      {
+        nick: "Goldi",
+        img: "LINK_DO_ZDJECIA_GOLDI",
+        link: "LINK_DO_STRONY_GOLDI"
+      },
+      {
+        nick: "kanapka",
+        img: "LINK_DO_ZDJECIA_KANAPKA",
+        link: "LINK_DO_STRONY_KANAPKA"
+      },
+      {
+        nick: "Nanotem",
+        img: "LINK_DO_ZDJECIA_NANOTEM",
+        link: "LINK_DO_STRONY_NANOTEM"
+      },
+      {
+        nick: "Takashi",
+        img: "LINK_DO_ZDJECIA_TAKASHI",
+        link: "LINK_DO_STRONY_TAKASHI"
+      }
+    ];
+
+    // --- Tutaj kod który tworzy automatycznie kartę dla każdego ziomka ---
+    const memberList = document.getElementById('memberList');
+
+    ziomki.forEach(ziomek => {
+      const memberDiv = document.createElement('div');
+      memberDiv.className = 'member';
+
+      memberDiv.innerHTML = `
+        <img src="${ziomek.img}" alt="${ziomek.nick}">
+        <a href="${ziomek.link}" target="_blank">${ziomek.nick}</a>
+      `;
+
+      memberList.appendChild(memberDiv);
+    });
+  </script>
+
+</body>
+</html>
