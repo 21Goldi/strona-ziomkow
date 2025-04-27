@@ -27,10 +27,12 @@
     }
     .member {
       background: white;
-      padding: 20px;
+      padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      width: 200px;
+      width: 90%; /* Zmiana szerokości, żeby zajmowały prawie całą stronę */
+      max-width: 900px; /* Maksymalna szerokość, żeby się nie rozciągało za mocno */
+      margin: 0 auto;
     }
     .member img {
       width: 100%;
@@ -41,12 +43,17 @@
       text-decoration: none;
       font-weight: bold;
       color: #333;
-      font-size: 18px;
+      font-size: 20px;
       display: block;
-      margin-top: 5px;
+      margin-top: 10px;
     }
     .member a:hover {
       color: #4CAF50;
+    }
+    .member p {
+      color: #333;
+      font-size: 16px;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -62,22 +69,26 @@
       {
         nick: "Goldi",
         img: "LINK_DO_ZDJECIA_GOLDI",
-        link: "https://www.roblox.com/users/974253888/profile"
+        link: "https://www.roblox.com/users/974253888/profile",
+        description: "Opis Goldiego - najlepszy ziomek na świecie!"
       },
       {
         nick: "kanapka",
         img: "LINK_DO_ZDJECIA_KANAPKA",
-        link: "LINK_DO_STRONY_KANAPKA"
+        link: "LINK_DO_STRONY_KANAPKA",
+        description: "Kanapka to mistrz w grze i zawsze ma ochotę na jedzenie!"
       },
       {
         nick: "Nanotem",
         img: "LINK_DO_ZDJECIA_NANOTEM",
-        link: "LINK_DO_STRONY_NANOTEM"
+        link: "LINK_DO_STRONY_NANOTEM",
+        description: "Nanotem to techniczny geniusz z niezłym poczuciem humoru."
       },
       {
         nick: "Takashi",
         img: "LINK_DO_ZDJECIA_TAKASHI",
-        link: "LINK_DO_STRONY_TAKASHI"
+        link: "LINK_DO_STRONY_TAKASHI",
+        description: "Takashi zawsze gotów na pomoc i świetny w strategiach."
       }
     ];
 
@@ -91,6 +102,7 @@
       memberDiv.innerHTML = `
         <img src="${ziomek.img}" alt="${ziomek.nick}">
         <a href="${ziomek.link}" target="_blank">${ziomek.nick}</a>
+        <p>${ziomek.description}</p>
       `;
 
       memberList.appendChild(memberDiv);
