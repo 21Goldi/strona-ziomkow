@@ -38,11 +38,13 @@
       align-items: center;
       transition: 0.3s;
       transform: scale(1);
+      color: #333;
     }
     .member img {
       width: 100px;
       height: auto;
       border-radius: 10px;
+      transition: 0.3s;
     }
     .member-content {
       text-align: left;
@@ -55,48 +57,25 @@
       font-size: 20px;
       display: block;
       margin-top: 10px;
-      transition: color 0.3s;
+      transition: 0.3s;
     }
     .member p {
       color: #333;
       font-size: 16px;
       margin-top: 5px;
+      transition: 0.3s;
     }
 
-    /* --- Hover kolory dla nicków --- */
-    .hover-goldi:hover {
-      color: #39FF14; /* zielony neon */
-    }
-    .hover-kanapka:hover {
-      color: #B026FF; /* fiolet neon */
-    }
-    .hover-nanotem:hover {
-      color: #FF073A; /* czerwony neon */
-    }
-    .hover-takashi:hover {
-      color: #9370DB; /* zostaje standardowy */
+    /* --- Hover dla całych kart --- */
+    .member:hover {
+      background: #000; /* czarne tło */
+      transform: scale(1.05);
     }
 
-    /* --- Hover efekty dla kart (kolor + powiększenie) --- */
-    .member-goldi:hover {
-      background: #6b6b6b; /* ciemne tło */
-      border: 2px solid #39FF14; /* zielony neon */
-      transform: scale(1.05);
-    }
-    .member-kanapka:hover {
-      background: #6b6b6b;
-      border: 2px solid #B026FF; /* fiolet neon */
-      transform: scale(1.05);
-    }
-    .member-nanotem:hover {
-      background: #6b6b6b;
-      border: 2px solid #FF073A; /* czerwony neon */
-      transform: scale(1.05);
-    }
-    .member-takashi:hover {
-      background: #6b6b6b;
-      border: 2px solid #9370DB;
-      transform: scale(1.05);
+    /* --- Hover: zmiana koloru tekstu na biały --- */
+    .member:hover .member-content a,
+    .member:hover .member-content p {
+      color: #ffffff;
     }
   </style>
 </head>
@@ -113,32 +92,24 @@
         img: "https://i.imgur.com/9XG8FWO.png",
         link: "https://www.roblox.com/users/974253888/profile",
         description: "Ziomek z dwubiegunowością i dużym ego",
-        hoverClass: "hover-goldi",
-        cardClass: "member-goldi"
       },
       {
         nick: "kanapka",
         img: "https://i.imgur.com/Z5RIQZi.png",
         link: "https://www.roblox.com/users/2447062401/profile",
         description: "Weeb co wpierdala więcej niż goldi i tak jest chudy jak patyk 👍🏻 😎",
-        hoverClass: "hover-kanapka",
-        cardClass: "member-kanapka"
       },
       {
         nick: "Nanotem",
         img: "https://i.imgur.com/NZOyAsz.png",
         link: "https://www.roblox.com/users/383566542/profile",
         description: "Krasnolud a nie elf (po lobotomii) pomyłka grozi kastracją",
-        hoverClass: "hover-nanotem",
-        cardClass: "member-nanotem"
       },
       {
         nick: "Takashi",
         img: "https://i.imgur.com/yOYvW2b.png",
         link: "https://www.roblox.com/users/3838983742/profile",
         description: "Nasz femboy",
-        hoverClass: "hover-takashi",
-        cardClass: "member-takashi"
       }
     ];
 
@@ -146,11 +117,11 @@
 
     ziomki.forEach(ziomek => {
       const memberDiv = document.createElement('div');
-      memberDiv.className = `member ${ziomek.cardClass}`;
+      memberDiv.className = 'member';
 
       memberDiv.innerHTML = `
         <div class="member-content">
-          <a href="${ziomek.link}" target="_blank" class="${ziomek.hoverClass}">${ziomek.nick}</a>
+          <a href="${ziomek.link}" target="_blank">${ziomek.nick}</a>
           <p>${ziomek.description}</p>
         </div>
         <img src="${ziomek.img}" alt="${ziomek.nick}">
