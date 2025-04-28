@@ -38,6 +38,7 @@
       align-items: center;
       transition: 0.3s;
       transform: scale(1);
+      border: 2px solid transparent;
       color: #333;
     }
     .member img {
@@ -66,16 +67,43 @@
       transition: 0.3s;
     }
 
-    /* --- Hover dla całych kart --- */
+    /* Hover standard */
     .member:hover {
-      background: #000; /* czarne tło */
+      background: #000;
       transform: scale(1.05);
     }
-
-    /* --- Hover: zmiana koloru tekstu na biały --- */
-    .member:hover .member-content a,
     .member:hover .member-content p {
-      color: #ffffff;
+      color: #fff;
+    }
+
+    /* --- Każdy ziomek ma swój styl --- */
+
+    .member-goldi:hover {
+      border-color: #39FF14;
+    }
+    .member-goldi:hover .member-content a {
+      color: #39FF14;
+    }
+
+    .member-kanapka:hover {
+      border-color: #B026FF;
+    }
+    .member-kanapka:hover .member-content a {
+      color: #B026FF;
+    }
+
+    .member-nanotem:hover {
+      border-color: #FF073A;
+    }
+    .member-nanotem:hover .member-content a {
+      color: #FF073A;
+    }
+
+    .member-takashi:hover {
+      border-color: #9370DB;
+    }
+    .member-takashi:hover .member-content a {
+      color: #9370DB;
     }
   </style>
 </head>
@@ -92,24 +120,28 @@
         img: "https://i.imgur.com/9XG8FWO.png",
         link: "https://www.roblox.com/users/974253888/profile",
         description: "Ziomek z dwubiegunowością i dużym ego",
+        cardClass: "member-goldi"
       },
       {
         nick: "kanapka",
         img: "https://i.imgur.com/Z5RIQZi.png",
         link: "https://www.roblox.com/users/2447062401/profile",
         description: "Weeb co wpierdala więcej niż goldi i tak jest chudy jak patyk 👍🏻 😎",
+        cardClass: "member-kanapka"
       },
       {
         nick: "Nanotem",
         img: "https://i.imgur.com/NZOyAsz.png",
         link: "https://www.roblox.com/users/383566542/profile",
         description: "Krasnolud a nie elf (po lobotomii) pomyłka grozi kastracją",
+        cardClass: "member-nanotem"
       },
       {
         nick: "Takashi",
         img: "https://i.imgur.com/yOYvW2b.png",
         link: "https://www.roblox.com/users/3838983742/profile",
         description: "Nasz femboy",
+        cardClass: "member-takashi"
       }
     ];
 
@@ -117,7 +149,7 @@
 
     ziomki.forEach(ziomek => {
       const memberDiv = document.createElement('div');
-      memberDiv.className = 'member';
+      memberDiv.className = `member ${ziomek.cardClass}`;
 
       memberDiv.innerHTML = `
         <div class="member-content">
